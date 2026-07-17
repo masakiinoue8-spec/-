@@ -18,7 +18,13 @@ YouTube Studioのデータを `assets/douga-jisseki.csv`（動画実績DB）に�
 **「どの車種・どのタイプが取れるか」を数字で答え、ネタ帳の優先度更新案まで出す**分析スキル。
 分析レポートは `assets/bunseki-report-template.md` の形式で出力する。
 
-## データの受け取り方（3経路どれでも）
+## データの受け取り方（4経路どれでも）
+
+0. **YouTube Data APIで全投稿履歴を自動取得（最速）**：
+   `scripts/fetch_channel_data.py` を `YOUTUBE_API_KEY=◯◯ python3 fetch_channel_data.py` で実行すると、
+   チャンネル（@kuruma-sall）の全動画のタイトル・公開日・再生回数・高評価・コメント数・長さがCSVで出る。
+   取得結果は車種・タイプ・形式（ショート/ロング）を自動推定済み。推定は必ず目視確認してからDBに統合する。
+   ※APIで取れるのは公開データのみ。インプレッション・CTR・維持率・登録者増は経路1のStudioエクスポートで補完する
 
 1. **YouTube Studioのエクスポート CSV**（推奨）：
    YouTube Studio → アナリティクス → 詳細モード → 右上のエクスポート → 「現在のビュー(.csv)」。
